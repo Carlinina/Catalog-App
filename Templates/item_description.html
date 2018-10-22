@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<main>
+    <!-- It contains one box -->
+    <div class="white_box">
+        <div id="item_description">
+            <div class="title">
+                <h2 class="title">{{item_title.title}}</h2>
+            </div>
+            <div class="description_box">
+                <div class="description">
+                    <h4>{{item_title.description}}</h4>
+                </div>
+            </div>
+            {% if loggedin: %}
+			<div class="container_login">
+                <a href="/catalog/{{item_title.title}}/edit">
+                    <button class="w3-button w3-deep-orange">
+                            <span class="login" aria-hidden="true"></span>Edit
+                    </button> 
+                </a>
+                &nbsp;&nbsp;
+                <a href="/catalog/{{item_title.title}}/delete">
+                    <button class="w3-button w3-deep-orange">
+                            <span class="login" aria-hidden="true"></span>Delete
+                    </button> 
+                </a>      
+            </div>
+        {% endif %}   
+        </div>
+        
+</main>
+{% endblock %}
+
+
+    

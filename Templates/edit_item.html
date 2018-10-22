@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<main>
+    <!-- It contains one box -->
+    <div class="white_box">
+        
+            <div id="edit_item">
+                <div>
+                    <h2 class="title">Edit Item</h2>
+                </div>
+                    <div>
+                        <form action="/catalog/{{item.title}}/edit" method = "post">
+                            <div class="form-group">
+                                <label for="title">Title:</label>
+                                <input type ="text" maxlength="100" class="form-control" name="title" value="{{item.title}}">
+                                </br>
+                                <label for="description">Description:</label>
+                                <textarea class="form-control" maxlength="250" rows="3" name="description">{{item.description}}</textarea>
+                                </br>
+                                <label for="category">Category:</label>
+                                <select name="category">
+                                    {% for category in categories: %}
+                                        {% if category.name == item.category.name: %}
+                                        <option selected value="{{category.name}}">{{category.name}}</option>
+                                        {% else %}
+                                        <option value="{{category.name}}">{{category.name}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                                </br>
+                                </br>
+                                <button type="submit" class="w3-button w3-deep-orange"  type="submit">
+                                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Submit
+                                </button>
+                                &nbsp;&nbsp;
+
+                                <a href = '{{url_for('showCategories')}}'>
+                                    <button class="w3-button w3-deep-orange" type="button">
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+                                </a>
+                            </div>
+                        </form>                     
+                    </div>
+                </div>  
+            </div>  
+        </div>
+    
+        
+    </div>
+</main>
+{% endblock %}

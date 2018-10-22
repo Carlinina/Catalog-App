@@ -1,0 +1,28 @@
+<header class="header">
+	<div class="container_title">
+		<div class="header_title">
+			<a href ="/">
+				<h1>Catalog App</h1>
+			</a>
+		</div>
+		{% if loggedin: %}
+			<div class="container_login">
+					<a href="/logout">
+						<button class="w3-button w3-deep-orange">
+								<span class="login" aria-hidden="true"></span>Logout
+						</button> 
+					</a>    
+			</div>
+		{% else %}
+			<div class="container_login">
+				<a href="/login">
+					<button class="w3-button w3-deep-orange">
+							<span class="login" aria-hidden="true"></span>Login
+					</button> 
+				</a>    
+			</div>
+		{% endif %}
+
+		
+	</div>
+</header>

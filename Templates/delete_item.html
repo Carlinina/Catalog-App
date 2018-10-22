@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<main>
+<div class="white_box">
+        
+	<div id="edit_item">
+		<div>
+			<h2 class="title">Are you sure you want to delete {{item.title}}? </h2>
+		</div>
+			<div>
+				<form action="/catalog/{{item.title}}/delete" method = 'post'>
+					<button type="submit" class="w3-button w3-deep-orange" id="submit" type="submit">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete</button>
+					<a href = '{{url_for('showCategories')}}'>
+						<button class="w3-button w3-deep-orange" type="button">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
+					</a>
+				</form>                     
+			</div>
+		</div>  
+	</div>  
+</div>
+
+
+</div>
+
+</main>
+{% endblock %}

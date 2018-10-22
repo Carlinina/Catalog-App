@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+<main>
+    <!-- It contains one box -->
+    <div class="white_box">
+    <div class = 'flash'>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+        <div id="subcontainer">
+                <div class="categories section">
+                    <div class="col-md-11 padding-none title">
+                        <h2 class="title">Categories</h2>
+                    </div>
+                    
+                    <ul style="list-style-type:none" class="categories_list">
+                        {% for category in categories %}
+                            <li>
+                                <a class="category_element" href ="/catalog/{{category.name}}/items">
+                                    {{category.name}}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="items section">   
+                        <div class="title">
+                                <h2 class="title">{{category.name}} Items ({{number_items}} items)</h2>
+                            </div>                                             
+                        <div>
+                            <ul style="list-style-type:none" class="">  
+                                {% for item in items %}
+                                    <li>
+                                            <a class="category_element" href ="/catalog/{{item.category.name}}/{{item.title}}">
+                                                <span class="lastitem_title">{{item.title}}</span>
+                                            </a>
+                                   
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>  
+                </div>                    
+        </div>    
+    </div>
+</main>
+{% endblock %}
+
+
+    

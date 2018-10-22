@@ -14,54 +14,46 @@ In order to run this program you will need the following:
 3. Launch the Vagrant VM (vagrant up)
 4. Copy the Flask application locally in the vagrant/catalog directory (which will automatically be synced to /vagrant/catalog within the VM).
 5. Run your application within the VM (python /vagrant/catalog/application.py)
-6. Access and test the application by visiting http://localhost:8000 locally
+6. Execute 'python lostsofitems.py' in the command line.
+7. Execute 'python application.py' in the command line.
+8. Access and test the application by visiting http://localhost:8000 locally
+9. Enjoy!
 
-1.  Use the psql command-line tool to create the following Views for each of the questions in the database:
-  
-  Question1:
-  
-  	CREATE VIEW popular_path AS SELECT title, slug, path FROM articles JOIN log ON log.path = CONCAT('/article/',articles.slug);
-  
-  Question2:
-  
-    CREATE VIEW popular_authors AS SELECT author, slug, path FROM articles JOIN log ON log.path = CONCAT('/article/',articles.slug);
- 	  
-    CREATE VIEW authors_views AS SELECT author, count(*) AS views FROM popular_authors GROUP BY author ORDER BY views DESC;
-  
-  Question3:
+## Project Display Example
 
-  	CREATE VIEW date_status AS SELECT DATE(time), status FROM log ORDER BY DATE(time);
-  
-  	CREATE VIEW date_error AS SELECT DATE(time), status FROM log WHERE status='404 NOT FOUND' ORDER BY DATE(time);
+In this sample project, the homepage displays all current categories along with the latest added items.
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0c98_localhost8080/localhost8080.png
+Example front page of the catalog app.
+http://localhost:8000/
 
-  	CREATE VIEW total_entries AS SELECT date, count(*) AS total_number FROM date_status GROUP BY date ORDER BY date ASC;
-  
-  	CREATE VIEW error100 AS SELECT date, count(*)*100 AS errors FROM date_error GROUP BY date ORDER BY date ASC;
-  
-  	CREATE VIEW percentage AS SELECT error100.date, (errors*1.00)/total_number AS percentage_errors FROM error100, total_entries WHERE total_entries.date=error100.date ORDER BY percentage_errors DESC;
-  
- 2. Execute 'python news_tool.py' in the command line.
- 
- 3. Enjoy!
- 
-## Example of the program's output
+Selecting a specific category shows you all the items available for that category.
+Example category page.
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0d0e_snowboarding/snowboarding.png
+http://localhost:8000/catalog/Snowboarding/items
 
-I will provide the file program_output_example.txt that is a copy of what the program will print out.
+Selecting a specific item shows you specific information of that item.
+Example item page.
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0d7a_item/item.png
+http://localhost:8000/catalog/Snowboarding/Snowboard
 
-Q1. Number of article's views:
+After logging in, a user has the ability to add, update, or delete item info.
+Logged-in view of the catalog app, showing a Logout button.
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0df0_edititem/edititem.png
+http://localhost:8000/ (logged in)
 
-     " Candidate is jerk, alleges rival " --  338647 views
-     " Bears love berries, alleges bear " --  253801 views
-     " Bad things gone, say good people " --  170098 views
-     
-Q2. Number of authors' views:
+Item description page when logged in, showing Edit and Delete buttons.
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0e51_snowboardloggedin/snowboardloggedin.png
+http://localhost:8000/catalog/Snowboarding/Snowboard (logged in)
 
-     " Ursula La Multa " --  507594 views
-     " Rudolf von Treppenwitz " --  423457 views
-     " Anonymous Contributor " --  170098 views
-     " Markoff Chaney " --  84557 views
-     
-Q3. Days where more than 1% of requests lead to errors:
+Edit view.
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0e8c_snowboardedit/snowboardedit.png
+http://localhost:8000/catalog/Snowboard/edit (logged in)
 
-     " 2016-07-17 " --  2.2626862468027260 % errors
+Delete confirmation dialog.
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0ec8_snowboarddelete/snowboarddelete.png
+http://localhost:8000/catalog/Snowboard/delete (logged in)
 
+The application provides a JSON endpoint, at the very least.
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0f11_catalogjson/catalogjson.png
+JSON endpoint output.
+http://localhost:8000/catalog.json

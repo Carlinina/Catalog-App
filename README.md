@@ -21,39 +21,49 @@ In order to run this program you will need the following:
 
 ## Project Display Example
 
-In this sample project, the homepage displays all current categories along with the latest added items.
-https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0c98_localhost8080/localhost8080.png
-Example front page of the catalog app.
+In this sample project, the homepage displays all current categories along with the latest added items:
 http://localhost:8000/
+Example front page of the catalog app:
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0c98_localhost8080/localhost8080.png
 
-Selecting a specific category shows you all the items available for that category.
-Example category page.
-https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0d0e_snowboarding/snowboarding.png
+Selecting a specific category shows you all the items available for that category:
 http://localhost:8000/catalog/Snowboarding/items
+Example category page:
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0d0e_snowboarding/snowboarding.png
 
-Selecting a specific item shows you specific information of that item.
-Example item page.
-https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0d7a_item/item.png
+
+Selecting a specific item shows you specific information of that item:
 http://localhost:8000/catalog/Snowboarding/Snowboard
+Example item page:
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0d7a_item/item.png
 
-After logging in, a user has the ability to add, update, or delete item info.
-Logged-in view of the catalog app, showing a Logout button.
-https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0df0_edititem/edititem.png
+
+After logging in, a user has the ability to add, update, or delete item info:
 http://localhost:8000/ (logged in)
+Logged-in view of the catalog app, showing a Logout button:
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0df0_edititem/edititem.png
+
 
 Item description page when logged in, showing Edit and Delete buttons.
-https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0e51_snowboardloggedin/snowboardloggedin.png
 http://localhost:8000/catalog/Snowboarding/Snowboard (logged in)
+Example:
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0e51_snowboardloggedin/snowboardloggedin.png
 
-Edit view.
-https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0e8c_snowboardedit/snowboardedit.png
+Edit view:
 http://localhost:8000/catalog/Snowboard/edit (logged in)
+Example:
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0e8c_snowboardedit/snowboardedit.png
 
-Delete confirmation dialog.
-https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0ec8_snowboarddelete/snowboarddelete.png
+
+Delete confirmation dialog:
 http://localhost:8000/catalog/Snowboard/delete (logged in)
+Example:
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0ec8_snowboarddelete/snowboarddelete.png
 
-The application provides a JSON endpoint, at the very least.
-https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0f11_catalogjson/catalogjson.png
-JSON endpoint output.
+
+The application provides a JSON endpoint:
 http://localhost:8000/catalog.json
+Example JSON endpoint output:
+https://d17h27t6h515a5.cloudfront.net/topher/2017/August/598e0f11_catalogjson/catalogjson.png
+
+

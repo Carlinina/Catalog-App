@@ -16,6 +16,7 @@ import json
 from flask import make_response
 import requests
 from pprint import pprint
+from sqlalchemy.exc import SQLAlchemyError
 
 app = Flask(__name__)
 
@@ -27,6 +28,7 @@ def connectDB():
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     return session
+
 
 CLIENT_ID = json.loads(
     open('client_secrets.json', 'r').read())['web']['client_id']
@@ -148,11 +150,11 @@ def getUserInfo(user_id):
 
 
 def getUserID(email):
-    esession = connectDB()
+    session = connectDB()
     try:
         user = session.query(User).filter_by(email=email).one()
         return user.id
-    except:
+    except SQLAlchemyError:
         return None
 
 
@@ -241,12 +243,11 @@ def showCategories():
     # After logging in, a user has the ability to add, update,
     # or delete item info.
     if 'access_token' in login_session:
-        loggedin = True
         loggedin = login_session['username']
     else:
         loggedin = False
     # return json.dumps(login_session)
-    return render_template('categories2.html', categories=categories,
+    return render_template('categories.html', categories=categories,
                            items=items, loggedin=loggedin)
 
 
@@ -260,7 +261,6 @@ def showItems(category_name):
     category_items = session.query(Item).filter_by(category_id=category.id)
     number_items = category_items.count()
     if 'access_token' in login_session:
-        loggedin = True
         loggedin = login_session['username']
     else:
         loggedin = False
@@ -279,7 +279,6 @@ def ItemDescription(category_name, item_title):
     item_title = session.query(Item).filter_by(title=item_title).first()
 
     if 'access_token' in login_session:
-        loggedin = True
         loggedin = login_session['username']
     else:
         loggedin = False
@@ -294,7 +293,6 @@ def editItem(item_title):
     categories = session.query(Category).order_by(asc(Category.name))
     creator = getUserInfo(editedItem.user_id)
     if 'access_token' in login_session:
-        loggedin = True
         loggedin = login_session['username']
         if 'username' not in login_session or creator.email != \
            login_session['username']:
@@ -302,7 +300,6 @@ def editItem(item_title):
                   by this user' % editedItem.title)
             return redirect(url_for('showCategories',
                             categories=categories, loggedin=loggedin))
-
     else:
         loggedin = False
     if request.method == 'POST':
@@ -332,7 +329,6 @@ def deleteItem(item_title):
     itemToDelete = session.query(Item).filter_by(title=item_title).first()
     creator = getUserInfo(itemToDelete.user_id)
     if 'access_token' in login_session:
-        loggedin = True
         loggedin = login_session['username']
         if 'username' not in login_session \
            or creator.email != login_session['username']:
@@ -359,7 +355,6 @@ def addItem():
     session = connectDB()
     categories = session.query(Category).order_by(asc(Category.name))
     if 'access_token' in login_session:
-        loggedin = True
         loggedin = login_session['username']
     else:
         loggedin = False
@@ -382,6 +377,7 @@ def addItem():
     else:
         return render_template('add_item.html',
                                categories=categories, loggedin=loggedin)
+
 
 if __name__ == '__main__':
     app.secret_key = 'super_secret_key'

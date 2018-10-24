@@ -27,7 +27,6 @@ class Category(Base):
 
     @property
     def serialize(self):
-
         return {
             'id': self.id,
             'name': self.name,
@@ -56,6 +55,7 @@ class Item(Base):
             'description': self.description,
             'id': self.id,
             'category_id': self.category_id,
+            'user': self.user.id,
         }
 
 

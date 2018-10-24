@@ -21,7 +21,7 @@ session = DBSession()
 
 
 # Create first user
-User1 = User(name="Carla Rodriguez Cuesta",
+User1 = User(id=1, name="Carla Rodriguez Cuesta",
              email="carlarodriguezcuesta@gmail.com",
              picture='https://as01.epimg.net/tikitakas/imagenes/2018/07/12/\
              portada/1531406570_709235_1531407095_noticia_normal.jpg')
@@ -29,7 +29,7 @@ session.add(User1)
 session.commit()
 
 # Items for Soccer
-category1 = Category(user_id=1, name="Soccer")
+category1 = Category(user_id=1, name="Soccer", id=1)
 
 session.add(category1)
 session.commit()
@@ -62,7 +62,7 @@ session.add(Item3)
 session.commit()
 
 # Items for Basketball
-category2 = Category(user_id=1, name="Basketball")
+category2 = Category(user_id=1, name="Basketball", id=2)
 
 session.add(category2)
 session.commit()
@@ -98,7 +98,7 @@ session.commit()
 
 
 # Items for Baseball
-category3 = Category(user_id=1, name="Baseball")
+category3 = Category(user_id=1, name="Baseball", id=3)
 
 session.add(category3)
 session.commit()
@@ -155,7 +155,7 @@ session.commit()
 
 
 # Items for Frisbee
-category4 = Category(user_id=1, name="Frisbee")
+category4 = Category(user_id=1, name="Frisbee", id=4)
 
 session.add(category4)
 session.commit()
@@ -177,7 +177,7 @@ session.commit()
 
 
 # Items for Snowboarding
-category5 = Category(user_id=1, name="Snowboarding")
+category5 = Category(user_id=1, name="Snowboarding", id=5)
 
 session.add(category5)
 session.commit()
@@ -211,7 +211,7 @@ Item3 = Item(user_id=1, title="Snowboard Helmet", description="Your \
 session.add(Item3)
 session.commit()
 # Items for Rock Climbing
-category6 = Category(user_id=1, name="Climbing")
+category6 = Category(user_id=1, name="Climbing", id=6)
 
 session.add(category6)
 session.commit()
@@ -244,7 +244,7 @@ session.add(Item3)
 session.commit()
 
 # Items for Foosball
-category7 = Category(user_id=1, name="Foosball")
+category7 = Category(user_id=1, name="Foosball", id=7)
 
 session.add(category7)
 session.commit()
@@ -267,7 +267,7 @@ session.commit()
 
 
 # Items for Skating
-category8 = Category(user_id=1, name="Skating")
+category8 = Category(user_id=1, name="Skating", id=8)
 
 session.add(category8)
 session.commit()
@@ -299,7 +299,7 @@ Item3 = Item(user_id=1, title="Towel", description="Figure skaters must \
 session.add(Item3)
 session.commit()
 # Items for Hockey
-category9 = Category(user_id=1, name="Hockey")
+category9 = Category(user_id=1, name="Hockey", id=9)
 
 session.add(category9)
 session.commit()
